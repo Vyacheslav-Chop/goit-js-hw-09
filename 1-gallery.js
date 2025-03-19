@@ -4,5 +4,5 @@
    <img class="gallery-image" src="${t}" alt="${i}"/>
    </a>
    </li>
-   `).join("")}new n(".gallery a",{captionsData:"alt",captionPosition:"bottom",captionDelay:250,enableKeyboard:!0,disableScroll:!0,fadeSpeed:400,overlayOpacity:1});
+   `).join("")}new n(".gallery a",{captionsData:"alt",captionPosition:"bottom",captionDelay:250,enableKeyboard:!0,disableScroll:!0,fadeSpeed:400,overlayOpacity:.8});
 //# sourceMappingURL=1-gallery.js.map

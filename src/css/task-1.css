@@ -22,3 +22,29 @@
   height: 100%;
   object-fit: cover;
 }
+
+.sl-overlay {
+  background: rgba(46, 47, 66, 0.8) !important;
+}
+
+.sl-wrapper .sl-close {
+  color: #fff !important;
+  font-size: 4rem !important;
+}
+
+.sl-wrapper .sl-navigation button {
+  color: #fff !important;
+}
+
+.sl-wrapper .sl-navigation button.sl-next {
+  font-size: 5rem !important;
+}
+
+.sl-wrapper .sl-navigation button.sl-prev {
+  font-size: 5rem !important;
+}
+
+.sl-wrapper .sl-counter {
+  color: #fff !important;
+  font-size: 2rem !important;
+}

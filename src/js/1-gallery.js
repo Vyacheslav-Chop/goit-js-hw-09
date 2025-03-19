@@ -91,5 +91,5 @@ new SimpleLightbox('.gallery a', {
   enableKeyboard: true,
   disableScroll: true,
   fadeSpeed: 400,
-  overlayOpacity: 0.8,
+  overlayOpacity: 1,
 });

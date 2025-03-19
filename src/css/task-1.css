@@ -1,0 +1,41 @@
+.container {
+  max-width: 1158px;
+  padding: 0 15px;
+  margin: 0 auto;
+}
+
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 24px;
+  row-gap: 48px;
+  align-items: center;
+  justify-content: center;
+}
+
+.gallery-item {
+  width: calc((100% - 48px) / 3);
+  height: 300px;
+}
+
+.gallery-image {
+  height: 100%;
+  object-fit: cover;
+}
+
+.sl-overlay {
+  background: rgba(46, 47, 66, 0.8) !important;
+}
+
+.sl-wrapper .sl-close {
+  color: #fff !important;
+  font-size: 4rem !important;
+}
+
+.sl-wrapper .sl-navigation button {
+  color: #fff !important;
+}
+
+.sl-wrapper .sl-counter {
+  color: #fff !important;
+}

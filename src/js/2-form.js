@@ -21,38 +21,68 @@
 // Оголоси поза будь-якими функціями об’єкт formData з полями email та message, які спочатку мають порожні рядки як значення: { email: "", message: "" }.
 
 const formData = {
-  email: "",
-  message: "",
-}
+  email: '',
+  message: '',
+};
 
-const LS_KEY = 'feedback-form-state';
 // Використовуй метод делегування для відстеження змін у формі через подію input. Зберігай актуальні дані з полів email та message у formData та записуй цей об’єкт у локальне сховище. Використовуй ключ "feedback-form-state" для зберігання даних у сховищі.
 
-const form = document.querySelector('.feedback-form');
-form.addEventListener('input', handleClick);
-form.addEventListener('submit', handleSubmit);
+const LS_KEY = 'feedback-form-state';
 
-function handleSubmit(event) {
-  event.preventDefault();  
+const form = document.querySelector('.feedback-form');
+
+console.dir(form);
+
+if (localStorage.getItem(LS_KEY)) {
+  const parsedKey = JSON.parse(localStorage.getItem(LS_KEY));
+
+  if (parsedKey.email) {
+    formData.email = parsedKey.email || '';
+    form.elements.email.value = formData.email;
+  }
+
+  if (parsedKey.message) {
+    formData.message = parsedKey.message || '';
+    form.elements.message.value = formData.message;
+  }
 }
 
-function handleClick(event) {
-  if (event.target.name === 'email' || event.target.name === 'message') {
+form.addEventListener('input', handleInput);
+form.addEventListener('submit', handleSubmit);
 
-    const userEmail = event.target.form.elements.email.value;
-    const userMessage = event.target.form.elements.message.value;
-
-    formData.email = userEmail;
-    formData.message = userMessage;
+function handleInput(event) {
+  if (event.target.name === 'email') {
+    formData.email = event.target.form.elements.email.value.trim();
+  } else if (event.target.name === 'message') {
+    formData.message = event.target.form.elements.message.value.trim();
   }
 
   localStorage.setItem(LS_KEY, JSON.stringify(formData));
-  
 }
 
+function handleSubmit(event) {
+  event.preventDefault();
 
-// При завантаженні сторінки перевір, чи є дані у локальному сховищі. Якщо так, використовуй їх для заповнення форми та об'єкта formData. Якщо ні, залиш поля форми порожніми.
-// Перед відправленням форми переконайся, що обидва поля форми заповнені. Якщо будь-яке з полів (властивостей об’єкта formData) порожнє, показуй сповіщення з текстом «Fill please all fields». Якщо всі поля заповнені, виведи у консоль об’єкт formData з актуальними значеннями, очисти локальне сховище, об’єкт formData і поля форми.
+  const userEmail = event.target.elements.email.value.trim();
+  const userMessage = event.target.elements.message.value.trim();
+
+  formData.email = userEmail;
+  formData.message = userMessage;
+
+  if (userEmail === '' || userMessage === '') {
+    alert('Fill please all fields');
+    return;
+  }
+
+  console.log(formData);
+
+  localStorage.removeItem(LS_KEY);
+
+  formData.email = '';
+  formData.message = '';
+
+  form.reset();
+}
 
 // На що буде звертати увагу ментор при перевірці:
 
